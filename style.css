@@ -1,5 +1,111 @@
-.button {
-    padding: 32px;
-    margin: 16px;
-    background-color:chartreuse
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+
+:root {
+  --primary-yellow: #ffcb05;
+  --second-yellow: #c7a008;
+  --primary-blue: #2a75bb;
+  --shadow-blue: #3c5aa6
+  --pale-shadow: #303030;
+  --deep-shadow: #000000;
+}
+
+html {
+  /* 
+  Set a base font size of 10px in the html for easier rem calculations 
+  Info: 1rem === 10px, 1.5rem === 15px, 2rem === 20px etc 
+  */
+  
+  font-size: 10px;
   }
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Exo", sans-serif;
+  font-size: 1.6rem;
+  background-color: var(--primary-yellow);
+  width: auto;
+  height: 400px;
+}
+
+.heading {
+  display: flex; 
+  justify-content: center;
+}
+
+#page-title {
+  text-align: center;
+}
+
+.button {
+  font-size: 2rem;
+  padding: 25px;
+  margin: 5px 10px;
+  width: 150px;
+  height: 75px;
+  border: 0;  
+  border-radius: 50%;
+  background-color: var(--primary-blue);
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px var(--pale-shadow);
+  }
+
+.button:active {
+  box-shadow: inset 0px 0px 5px var(--pale-shadow)
+}
+
+#both-cards{
+  display: grid;
+  grid-template-columns: 350px 350px 
+}
+
+.card-container {
+  background-color: var(--primary-blue);
+  width: 285px;
+  height: auto;
+  margin: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px var(--deep-shadow);
+
+}
+
+.card-background {
+  background: linear-gradient(to right, pink, red);
+  text-align: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.card-image {
+  width: 200px;
+  height: 200px;
+}
+
+.card-content {
+  background-color: #7e7e7e;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card-name {
+  text-align: center;
+  padding: 10px;
+}
+
+.card-type {
+  background-color: black;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+  width:100px;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: -70px;
+}

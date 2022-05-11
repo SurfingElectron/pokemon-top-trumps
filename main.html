@@ -1,35 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>Pokemon Top Trumps</title>
+    <title>Pokémon Top Trumps</title>
     <link rel="stylesheet" href="style.css" />
   </head>
     <body>
-  <h1 id="page-title">Pokemon battles!</h1>
+      <div id="heading">
+        <img id="pokemon-logo" src="/img/logo-pokemon-pixel.png">
+        <h1 id="page-title">Top Trumps!</h1>
+      </div>
   
-  <div id="name-input">
-    <h2 id = "welcome">Welcome!</h2>
-    <p>Please tell me your name:</p>
-    <input id ="player-name" type="text" placeholder = "Name"></input>
-  </div>
+     <div id="name-input">
+       <h2 id = "player-welcome">Welcome!</h2>
+        <label for="player-name" class="input-label">Please enter your name:</label>
+       <input id ="player-name" type="text" placeholder = "Name"></input>
+     </div>
 
-  <div id="pokemon-input">
-    <p>Please choose your pokemon:</p>
-    <input id ="pokemon-name" type="text" placeholder = "Pokemon name"></input>
-  </div>
+     <div id="pokemon-input">
+        <label for="pokemon-name" class="input-label">Choose your pokémon:</label>
+       <input id ="pokemon-name" type="text" placeholder = "Pokemon name"></input>
+     </div>
 
-  <div id="fight">
-    <button id="fight-button" class="button">FIGHT!</button>
-  </div>
+      <div id="fight">
+        <button id="fight-button" class="button">FIGHT!</button>
+      </div>
 
-  <div id="results"></div>
-  <hr />
-  <h2>Battle results:</h2>
-  <ul id="results-list">
-    <li id="games-played">Games played: 0</li>
-    <li id="wins">Wins: 0</li>
-    <li id="losses">Losses: 0</li>
-    <li id="drew">Drew: 0</li>
-  </ul>
-    <script src="main.js"></script>
-  </body>
-</html>
+      <div id="both-cards">
+
+        <div id="player-card" class="card-container">
+          <div class="card">
+            <div class="card-background">
+              <img class="card-image" src="/img/pokeball.png" >
+            </div>
+
+            <div class="card-content">
+              <h3 class="card-name">NAME</h3>
+              <span class="card-type">TYPE</span>
+              <div class="card-stats">
+                <p>Power:</p>
+                <p>Damage:</p>
+                <p>Attacks:</p>
+                <p>Health:</p>
+                <p>Friendly:</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="computer-card" class="card-container">
+          <div class="card">
+            <div class="card-background">
+              <img class="card-image" src="/img/pokeball.png" >
+            </div>
+
+            <div class="card-content">
+              <h3 class="card-name">NAME</h3>
+              <span class="card-type">TYPE</span>
+              <div class="card-stats">
+                <p>Power:</p>
+                <p>Damage:</p>
+                <p>Attacks:</p>
+                <p>Health:</p>
+                <p>Friendly:</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div id="results"></div>
+      <hr />
+      <h2>Battle results:</h2>
+      <ul id="results-list">
+        <li id="games-played">Cards left: 0</li>
+        <li id="wins">Wins: 0</li>
+        <li id="losses">Losses: 0</li>
+        <li id="drew">Drew: 0</li>
+      </ul>
+        <script src="main.js"></script>
+      </body>
+    </html>
