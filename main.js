@@ -1,38 +1,47 @@
 //DEFINING VARIABLES
-let playerNameInput = document.querySelector("#player-name");
-let welcomeHeader = document.querySelector(`#player-welcome`);
+let welcomeHeader = document.querySelector('#player-welcome');
 let fightButton = document.querySelector("#fight-button");
-let pokemonNameInput = document.querySelector("#pokemon-name");
-let playerPokemon ;
-let computerPokemon ;
 
-const score = {roundCount: 0, winCount: 0, lossCount: 0, drawCount: 0};
+const nameForm = document.getElementById('name_entry');
+const nameFormDiv = document.querySelector('.name_form');
 
 const totalLi = document.querySelector('#games-played');
 const winLi = document.querySelector('#wins');
 const lossLi = document.querySelector('#losses');
 const drawLi = document.querySelector('#draws');
 
+let playerPokemon = "";
+let computerPokemon = 0;
+
+const score = {roundCount: 0, winCount: 0, lossCount: 0, drawCount: 0};
+
 //EVENT LISTENERS - 
-playerNameInput.addEventListener(`keydown`, enterName);
-pokemonNameInput.addEventListener(`keydown`, handlePlayerPokemon);
-fightButton.addEventListener(`click`, pokemonFight);
+fightButton.addEventListener('click', pokemonFight);
+nameForm.addEventListener('submit', handleSubmit);
 
 //FUNCTIONS
-//Player name, posts to webpage
-function enterName(e){ 
-    if (e.key == `Enter`){
-    welcomeHeader.innerText = `Welcome  ${playerNameInput.value}, are you ready to fight? `;
-    }
-}
+//Form submission handler
+function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const playerName = data.get('player_name');
+    playerPokemon = data.get('pokemon_name');
+    console.log(playerName, playerPokemon);
 
-//Player's choice of pokemon, assigns to playerPokemon variable
-function handlePlayerPokemon(e){ 
-    if (e.key == `Enter`){
-    playerPokemon = pokemonNameInput.value;
-    }   
+    if (!isLetter(playerName)) {
+        alert("Your name must start with a capital letter, please try again!");
+        return null;
+    }
+      
+    welcomeHeader.innerText = `Let's play, ${playerName}!`
+    nameFormDiv.style.visibility = 'hidden'; //hides the form after name entry
+
 }
-    
+  
+//Checks if the first character of a string is a letter AND capital
+function isLetter(letterCheck) {
+    return letterCheck !== letterCheck.toLowerCase();
+}
 
 //Computer's choice of pokemon, picked by random number 1-898
 function getComputerMove() {

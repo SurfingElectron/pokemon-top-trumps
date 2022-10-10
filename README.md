@@ -1,7 +1,11 @@
 # Pokémon Top Trumps
 
-## Descripton
-WIP
+## Demo
+![Pokémon Top Trumps Demo](img/PTT_demo.gif)
+
+
+# Lessons Learned
+This was a simple HTML, JavaScript, and CSS project to learn the basics of working with APIs.
 
 ## Versions
 

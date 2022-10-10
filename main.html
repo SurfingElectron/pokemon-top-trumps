@@ -5,23 +5,26 @@
   </head>
     <body>
       <div id="heading">
-        <img id="pokemon-logo" src="/img/logo-pokemon-pixel.png">
+        <div id="center-img">
+          <img id="pokemon-logo" src="/img/logo-pokemon-pixel.png" alt="Pokemon">
+        </div>
         <h1 id="page-title">Top Trumps!</h1>
       </div>
+
+      <h2 id = "player-welcome">Welcome!</h2>
+
+      <section class="name_form">
+        <form id="name_entry" name="name_entry">
+          <label for="username">What's your name? (max 10 characters):</label>
+          <input type="text" id="player_name" name="player_name" required minlength="2" maxlength="10" size="12" placeholder="Name">
+          <label for="username">Choose your pokémon:</label>
+          <input type="text" id="pokemon_name" name="pokemon_name" required minlength="2" maxlength="15" size="12" placeholder="Name">
+          <input id="submit_button" type="submit" value="Submit">
+        </form> 
+      </section>
   
-     <div id="name-input">
-       <h2 id = "player-welcome">Welcome!</h2>
-        <label for="player-name" class="input-label">Please enter your name:</label>
-       <input id ="player-name" type="text" placeholder = "Name"></input>
-     </div>
-
-     <div id="pokemon-input">
-        <label for="pokemon-name" class="input-label">Choose your pokémon:</label>
-       <input id ="pokemon-name" type="text" placeholder = "Pokemon name"></input>
-     </div>
-
       <div id="fight">
-        <button id="fight-button" class="button">FIGHT!</button>
+        <button id="fight-button" class="button">LET'S GO!</button>
       </div>
 
       <div id="both-cards">
