@@ -1,13 +1,17 @@
 /* Font import */
-@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo&family=Silkscreen&display=swap');
 
 :root {
   --primary-yellow: #ffcb05;
-  --second-yellow: #c7a008;
+  --secondary-yellow: #c7a008;
   --primary-blue: #2a75bb;
-  --shadow-blue: #3c5aa6
+  --secondary-blue: #3c5aa6;
   --pale-shadow: #303030;
   --deep-shadow: #000000;
+  --default-margin: 2%;
+  --small-margin: 1%;
+  --heading-font: "Silkscreen", monospace;
+  --body-font: "Exo", sans-serif;
 }
 
 * {
@@ -16,67 +20,124 @@
 }
 
 html {
-  /* 
-  Set a base font size of 10px in the html for easier rem calculations 
-  Info: 1rem === 10px, 1.5rem === 15px, 2rem === 20px etc 
-  */
-  
   font-size: 10px;
+  /* 
+  Sets a base font size of 10px in the HTML for easier rem calculations 
+  Info: 1rem === 10px, 1.5rem === 15px, 2rem === 20px, etc 
+  */ 
   }
 
 body {
-  font-family: "Exo", sans-serif;
+  font-family: var(--body-font);
   font-size: 1.6rem;
   background-color: var(--primary-yellow);
 }
 
-.heading {
+h1,
+h2 {
+  text-align: center; 
+  font-family: var(--heading-font);
+}
+
+label {
+  display: inline-block;
+}
+
+input[type=text],
+select {
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid var(--secondary-yellow);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+input[type=submit] {
+  font-family: inherit;
+  font-size: inherit;
+  color: white;
+  background-color: var(--primary-blue);
+  border: 0;  
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin-top: var(--small-margin);
+}
+
+input[type=submit]:hover {
+  background-color: var(--secondary-blue);
+}
+
+input[type=submit]:active {
+  background-color: var(--secondary-blue);
+  box-shadow: inset 2px 2px 5px var(--deep-shadow)
+}
+
+
+/* PAGE HEADINGS */
+#heading {
   display: flex; 
   flex-direction: column;
   align-items: center;
+  margin: var(--default-margin);
 }
 
 #center-img {
-  width: 100%;
   display: flex;
   justify-content: center;
 }
 
-#page-title {
-  text-align: center;
-  width: 100vw;
+#player_welcome {
+  visibility: hidden;
+}
+
+/* USER INPUTS */
+.form {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  margin: var(--default-margin);
+}
+
+#pokemon_form {
+  visibility: hidden;
+}
+
+#fight {
+  display: flex; 
+  justify-content: center;
+  margin: var(--default-margin);
 }
 
 .button {
   font-size: 2rem;
-  color: white;
-  margin: 5px 10px;
-  width: 150px;
-  height: 75px;
+  padding: 20px;
   border: 0;  
   border-radius: 10px;
+  color: white;
   background-color: var(--primary-blue);
   box-shadow: 2px 2px 10px var(--deep-shadow);
+  visibility: hidden;
   }
 
 .button:active {
   box-shadow: inset 2px 2px 5px var(--deep-shadow)
 }
 
-#both-cards{
-  display: grid;
-  grid-template-columns: 350px 350px 
+/* CARD DISPLAY */
+#both-cards {
+  display: flex;
+  justify-content: center;
+  margin: var(--default-margin);
 }
 
 .card-container {
   background-color: var(--primary-blue);
   width: 285px;
   height: auto;
-  margin: 10%;
+  margin: 0% 3%;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px var(--deep-shadow);
-
 }
 
 .card-background {
@@ -92,7 +153,7 @@ body {
 }
 
 .card-content {
-  background-color: #7e7e7e;
+  background-color: var(--secondary-yellow);
   padding: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -108,7 +169,7 @@ body {
   padding: 5px;
   color: white;
   border-radius: 5px;
-  width:100px;
+  width: 100px;
   display: block;
   text-align: center;
   position: relative;

@@ -1,9 +1,9 @@
 //DEFINING VARIABLES
-let welcomeHeader = document.querySelector('#player-welcome');
+let welcomeHeader = document.querySelector('#player_welcome');
 let fightButton = document.querySelector("#fight-button");
 
 const nameForm = document.getElementById('name_entry');
-const nameFormDiv = document.querySelector('.name_form');
+const pokeForm = document.getElementById('pokemon_form');
 
 const totalLi = document.querySelector('#games-played');
 const winLi = document.querySelector('#wins');
@@ -15,18 +15,18 @@ let computerPokemon = 0;
 
 const score = {roundCount: 0, winCount: 0, lossCount: 0, drawCount: 0};
 
-//EVENT LISTENERS - 
+//EVENT LISTENERS 
 fightButton.addEventListener('click', pokemonFight);
-nameForm.addEventListener('submit', handleSubmit);
+nameForm.addEventListener('submit', handleNameSubmit);
+pokeForm.addEventListener('submit', handlePokemonSubmit);
 
 //FUNCTIONS
 //Form submission handler
-function handleSubmit(event) {
+function handleNameSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     const playerName = data.get('player_name');
-    playerPokemon = data.get('pokemon_name');
-    console.log(playerName, playerPokemon);
+    console.log(playerName);
 
     if (!isLetter(playerName)) {
         alert("Your name must start with a capital letter, please try again!");
@@ -34,9 +34,23 @@ function handleSubmit(event) {
     }
       
     welcomeHeader.innerText = `Let's play, ${playerName}!`
-    nameFormDiv.style.visibility = 'hidden'; //hides the form after name entry
-
+    welcomeHeader.style.visibility = 'visible';
+    nameForm.style.visibility = 'hidden'; //hides the form after name entry
+    pokeForm.style.visibility = 'visible'; //shows the pokemon form once we have a name
 }
+
+function handlePokemonSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    playerPokemon = data.get('pokemon_name').toLowerCase(); //API stores all pokemon names as lower case
+    console.log(playerPokemon);
+
+    if (!isLetter(playerName)) {
+        alert("Your name must start with a capital letter, please try again!");
+        return null;
+    }
+}
+
   
 //Checks if the first character of a string is a letter AND capital
 function isLetter(letterCheck) {
@@ -63,14 +77,16 @@ async function getPokemonData(pokeRef) {
 
 //Calculating the battle result
  async function pokemonFight() {
-    computerPokemon = getComputerMove();
+    let computerPokemon = getComputerMove();
     console.log('Player Selection:', playerPokemon);
     console.log('Computer selection:', computerPokemon);
-    let playerPokemon = await getPokemonData(playerPokemon);
-    let computerPokemon = await getPokemonData(computerPokemon);
-    console.log('Player Pokemon Strength:', playerPokemon);
-    console.log('Computer Pokemon Strength:', computerPokemon);
 
+    let playerPokeData = await getPokemonData(playerPokemon);
+    let computerPokeData = await getPokemonData(computerPokemon);
+    console.log('Player Pokemon Strength:', playerPokeData);
+    console.log('Computer Pokemon Strength:', computerPokeData);
+
+    /*
     score.roundCount++;
     totalLi.innerText = `Games played: ${score.roundCount}`;
     if (playerPokemon < computerPokemon) {
@@ -86,5 +102,6 @@ async function getPokemonData(pokeRef) {
         drawLi.innerText = `Draws: ${score.drawCount}`;
         console.log('draw');
     }
+    */
  }
 

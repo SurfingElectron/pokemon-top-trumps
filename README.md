@@ -5,10 +5,9 @@
 
 
 # Lessons Learned
-This was a simple HTML, JavaScript, and CSS project to learn the basics of working with APIs.
+This was a HTML, JavaScript, and CSS project to learn the basics of working with APIs.
 
 ## Versions
-
 ### 0.1
 Basic functionality
 - Player inputs pokémon

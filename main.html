@@ -8,18 +8,40 @@
         <div id="center-img">
           <img id="pokemon-logo" src="/img/logo-pokemon-pixel.png" alt="Pokemon">
         </div>
-        <h1 id="page-title">Top Trumps!</h1>
+        <h1 id="page-title">Top Trumps</h1>
       </div>
 
-      <h2 id = "player-welcome">Welcome!</h2>
-
-      <section class="name_form">
+      <section class="form">
         <form id="name_entry" name="name_entry">
-          <label for="username">What's your name? (max 10 characters):</label>
+
+          <label for="player_name">What's your name? <small>(max 10 characters)</small>:</label>
           <input type="text" id="player_name" name="player_name" required minlength="2" maxlength="10" size="12" placeholder="Name">
-          <label for="username">Choose your pokémon:</label>
-          <input type="text" id="pokemon_name" name="pokemon_name" required minlength="2" maxlength="15" size="12" placeholder="Name">
+
           <input id="submit_button" type="submit" value="Submit">
+
+        </form> 
+      </section>  
+
+      <h2 id ="player_welcome">Welcome!</h2>
+          
+        <section class="form" id="pokemon_form">
+        <form id="pokemon_entry" name="pokemon_entry"></form>
+
+          <div id="pokemon_input">  
+            <label for="pokemon_name">Choose your pokémon:</label>
+            <input type="text" id="pokemon_name" name="pokemon_name" required minlength="2" maxlength="15" size="12" placeholder="Name">
+
+            <label for="pokemon_stat">and a stat to compare:</label>
+            <select id="pokemon_stat" name="stat_choice">
+              <option value="hp">Hit Points (HP)</option>
+              <option value="attack">Attack</option>
+              <option value="defence">Defence</option>
+              <option value="speed">Speed</option>
+            </select>
+          </div> 
+
+          <input id="submit_button" type="submit" value="I choose you!">
+
         </form> 
       </section>
   
@@ -39,11 +61,11 @@
               <h3 class="card-name">NAME</h3>
               <span class="card-type">TYPE</span>
               <div class="card-stats">
-                <p>Power:</p>
-                <p>Damage:</p>
-                <p>Attacks:</p>
-                <p>Health:</p>
-                <p>Friendly:</p>
+                <p>HP:</p>
+                <p>Attack:</p>
+                <p>Defence:</p>
+                <p>Speed:</p>
+                <p>Weight:</p>
               </div>
             </div>
           </div>
@@ -59,11 +81,11 @@
               <h3 class="card-name">NAME</h3>
               <span class="card-type">TYPE</span>
               <div class="card-stats">
-                <p>Power:</p>
-                <p>Damage:</p>
-                <p>Attacks:</p>
-                <p>Health:</p>
-                <p>Friendly:</p>
+                <p>HP:</p>
+                <p>Attack:</p>
+                <p>Defence:</p>
+                <p>Speed:</p>
+                <p>Weight:</p>
               </div>
             </div>
           </div>
