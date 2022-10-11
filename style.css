@@ -98,9 +98,11 @@ input[type=submit]:active {
   margin: var(--default-margin);
 }
 
+/*
 #pokemon_form {
   visibility: hidden;
 }
+*/
 
 #fight {
   display: flex; 

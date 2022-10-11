@@ -2,8 +2,10 @@
 let welcomeHeader = document.querySelector('#player_welcome');
 let fightButton = document.querySelector("#fight-button");
 
+const nameFormDiv = document.getElementById('name_form');
 const nameForm = document.getElementById('name_entry');
-const pokeForm = document.getElementById('pokemon_form');
+const pokeFormDiv = document.getElementById('pokemon_form');
+const pokeForm = document.getElementById('pokemon_entry');
 
 const totalLi = document.querySelector('#games-played');
 const winLi = document.querySelector('#wins');
@@ -16,9 +18,9 @@ let computerPokemon = 0;
 const score = {roundCount: 0, winCount: 0, lossCount: 0, drawCount: 0};
 
 //EVENT LISTENERS 
-fightButton.addEventListener('click', pokemonFight);
 nameForm.addEventListener('submit', handleNameSubmit);
-pokeForm.addEventListener('submit', handlePokemonSubmit);
+pokeForm.addEventListener('submit', handlePokeSubmit);
+fightButton.addEventListener('click', pokemonFight);
 
 //FUNCTIONS
 //Form submission handler
@@ -26,7 +28,6 @@ function handleNameSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     const playerName = data.get('player_name');
-    console.log(playerName);
 
     if (!isLetter(playerName)) {
         alert("Your name must start with a capital letter, please try again!");
@@ -35,20 +36,19 @@ function handleNameSubmit(event) {
       
     welcomeHeader.innerText = `Let's play, ${playerName}!`
     welcomeHeader.style.visibility = 'visible';
-    nameForm.style.visibility = 'hidden'; //hides the form after name entry
-    pokeForm.style.visibility = 'visible'; //shows the pokemon form once we have a name
+    nameFormDiv.style.visibility = 'hidden'; //hides the form after name entry
+    pokeFormDiv.style.visibility = 'visible'; //shows the pokemon form once we have a name
 }
 
-function handlePokemonSubmit(event) {
+function handlePokeSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
-    playerPokemon = data.get('pokemon_name').toLowerCase(); //API stores all pokemon names as lower case
-    console.log(playerPokemon);
+    console.log('clicky clicky');
+   // const data = new FormData(event.target);
+   // playerPokemon = data.get('pokemon_name').toLowerCase(); //API stores all pokemon names as lower case
+    //console.log(playerPokemon);
 
-    if (!isLetter(playerName)) {
-        alert("Your name must start with a capital letter, please try again!");
-        return null;
-    }
+
+    //fightButton.style.visibility = 'visible'; //show the fight button
 }
 
   

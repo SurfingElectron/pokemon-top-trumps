@@ -11,13 +11,13 @@
         <h1 id="page-title">Top Trumps</h1>
       </div>
 
-      <section class="form">
+      <section class="form" id="name_form">
         <form id="name_entry" name="name_entry">
 
           <label for="player_name">What's your name? <small>(max 10 characters)</small>:</label>
           <input type="text" id="player_name" name="player_name" required minlength="2" maxlength="10" size="12" placeholder="Name">
 
-          <input id="submit_button" type="submit" value="Submit">
+          <input id="name_submit" type="submit" value="Submit">
 
         </form> 
       </section>  
@@ -27,9 +27,9 @@
         <section class="form" id="pokemon_form">
         <form id="pokemon_entry" name="pokemon_entry"></form>
 
-          <div id="pokemon_input">  
+          <div id="pokemon_field_div">  
             <label for="pokemon_name">Choose your pokémon:</label>
-            <input type="text" id="pokemon_name" name="pokemon_name" required minlength="2" maxlength="15" size="12" placeholder="Name">
+            <input type="text" id="pokemon_name" name="pokemon_name" required minlength="2" maxlength="15" size="12" placeholder="Pokémon">
 
             <label for="pokemon_stat">and a stat to compare:</label>
             <select id="pokemon_stat" name="stat_choice">
@@ -40,7 +40,7 @@
             </select>
           </div> 
 
-          <input id="submit_button" type="submit" value="I choose you!">
+          <input id="pokemon_submit" type="submit" value="I choose you!">
 
         </form> 
       </section>
