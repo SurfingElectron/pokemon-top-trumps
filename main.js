@@ -1,6 +1,6 @@
 //DEFINING VARIABLES
 let welcomeHeader = document.querySelector('#player_welcome');
-let fightButton = document.querySelector("#fight-button");
+let fightButton = document.querySelector('#fight-button');
 
 const nameFormDiv = document.getElementById('name_form');
 const nameForm = document.getElementById('name_entry');
@@ -12,8 +12,9 @@ const winLi = document.querySelector('#wins');
 const lossLi = document.querySelector('#losses');
 const drawLi = document.querySelector('#draws');
 
-let playerPokemon = "";
+let playerPokemon = '';
 let computerPokemon = 0;
+let battleStat = 'hp';
 
 const score = {roundCount: 0, winCount: 0, lossCount: 0, drawCount: 0};
 
@@ -22,15 +23,16 @@ nameForm.addEventListener('submit', handleNameSubmit);
 pokeForm.addEventListener('submit', handlePokeSubmit);
 fightButton.addEventListener('click', pokemonFight);
 
+
 //FUNCTIONS
-//Form submission handler
+//Form submission handlers
 function handleNameSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
     const playerName = data.get('player_name');
 
     if (!isLetter(playerName)) {
-        alert("Your name must start with a capital letter, please try again!");
+        alert('Your name must start with a capital letter, please try again!');
         return null;
     }
       
@@ -42,16 +44,17 @@ function handleNameSubmit(event) {
 
 function handlePokeSubmit(event) {
     event.preventDefault();
-    console.log('clicky clicky');
-   // const data = new FormData(event.target);
-   // playerPokemon = data.get('pokemon_name').toLowerCase(); //API stores all pokemon names as lower case
-    //console.log(playerPokemon);
+    const data = new FormData(event.target);
+    playerPokemon = data.get('pokemon_name').toLowerCase(); //API stores all pokemon names as lower case
+    battleStat = data.get('battle_stat');
 
 
-    //fightButton.style.visibility = 'visible'; //show the fight button
+    let test = getPokemonData(playerPokemon);
+    console.log(test);
+    fightButton.style.visibility = 'visible'; //show the fight button
 }
 
-  
+//Helper functions
 //Checks if the first character of a string is a letter AND capital
 function isLetter(letterCheck) {
     return letterCheck !== letterCheck.toLowerCase();
