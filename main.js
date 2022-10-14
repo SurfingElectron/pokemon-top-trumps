@@ -73,6 +73,11 @@ async function getPokemonData(pokeRef) {
     let pokeURL = 'https://pokeapi.co/api/v2/pokemon/' + pokeRef;
     const response = await fetch(pokeURL);
     let data = await response.json(); 
+
+    if  (data.status === 404) {
+        //do what?
+    }
+
     console.log(data); //.stats[1].base_stat
     return data.stats[1].base_stat;
     }
