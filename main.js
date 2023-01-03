@@ -1,4 +1,4 @@
-//DEFINING VARIABLES
+//DEFINING DOM SELECTORS
 let welcomeHeader = document.querySelector('#player_welcome');
 let fightButton = document.querySelector('#fight-button');
 
@@ -6,12 +6,14 @@ const nameFormDiv = document.getElementById('name_form');
 const nameForm = document.getElementById('name_entry');
 const pokeFormDiv = document.getElementById('pokemon_form');
 const pokeForm = document.getElementById('pokemon_entry');
+const pokeInput = document.getElementById('pokemon_name');
 
 const totalLi = document.querySelector('#games-played');
 const winLi = document.querySelector('#wins');
 const lossLi = document.querySelector('#losses');
 const drawLi = document.querySelector('#draws');
 
+//INITIALISING VARIABLES
 let playerPokemon = '';
 let computerPokemon = 0;
 let battleStat = 'hp';
@@ -23,8 +25,15 @@ nameForm.addEventListener('submit', handleNameSubmit);
 pokeForm.addEventListener('submit', handlePokeSubmit);
 fightButton.addEventListener('click', pokemonFight);
 
-
 //FUNCTIONS
+function pokemonFight() {
+    computerPokemon = getComputerMove();
+    let compBattleValue = getPokemonData(computerPokemon);//Get the computer's pokemon from the API
+    //Compare the two battle values
+    //Output the winner
+}
+
+
 //Form submission handlers
 function handleNameSubmit(event) {
     event.preventDefault();
@@ -48,10 +57,9 @@ function handlePokeSubmit(event) {
     playerPokemon = data.get('pokemon_name').toLowerCase(); //API stores all pokemon names as lower case
     battleStat = data.get('battle_stat');
 
-
-    let test = getPokemonData(playerPokemon);
-    console.log(test);
-    fightButton.style.visibility = 'visible'; //show the fight button
+    let playerBattleValue = getPokemonData(playerPokemon);
+    console.log(playerBattleValue);
+    
 }
 
 //Helper functions
@@ -67,21 +75,28 @@ function getComputerMove() {
     return randomIndex;
 }
 
-
 //API fetch, takes in a reference value to create appropriate URL
 async function getPokemonData(pokeRef) {
     let pokeURL = 'https://pokeapi.co/api/v2/pokemon/' + pokeRef;
     const response = await fetch(pokeURL);
-    let data = await response.json(); 
 
-    if  (data.status === 404) {
-        //do what?
+    if  (response.status !== 200) {
+        alert('Not a valid pokemon, please try again!');
+        pokeInput.value = ''; //clear the text box
+        return null;
+    } else {
+        let data = await response.json(); 
+        //console.log(data); //HP: 0, Attack: 1, Defence: 2, Speed: 5
+        fightButton.style.visibility = 'visible'; //show the fight button only after we have a valid response
+        return data.stats[1].base_stat;
     }
+ }
 
-    console.log(data); //.stats[1].base_stat
-    return data.stats[1].base_stat;
-    }
-
+//Error handling 
+function handleError(err) {
+    console.log('It done broke, Jim!');
+    console.log(err);
+}
 
 //Calculating the battle result
  async function pokemonFight() {
