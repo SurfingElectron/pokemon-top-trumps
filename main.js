@@ -57,17 +57,38 @@ async function pokemonFight() {
     let compStats = await getPokemonData(compPokemon);
     displayCompPokemon(compStats);
 
-    //Update the total number of rounds
-    score.roundCount++;
-    totalLi.innerText = `Games played: ${score.roundCount}`;
+    //Use a switch statement to set 
+    let playerBattleValue = '';
+    let compBattleValue = '';
 
-   //Calcuate who won, and update win/loss/draw 
-    
-    if (+playerStats.hp < +compStats.hp) {
+    console.log(battleStat);
+    switch (battleStat) {
+        case 'hp': 
+            playerBattleValue = +playerStats.hp;
+            compBattleValue = +compStats.hp;     
+            break;
+        case 'attack':
+            playerBattleValue = +playerStats.attack;
+            compBattleValue = +compStats.attack;  
+            break;
+        case 'defence':
+            playerBattleValue = +playerStats.defence;
+            compBattleValue = +compStats.defence;  
+            break;
+        case 'speed':
+            playerBattleValue = +playerStats.speed;
+            compBattleValue = +compStats.speed;  
+            break;
+        default:
+            console.log('Something is not working!');
+    };
+  
+    //Calcuate who won, and update win/loss/draw 
+    if (playerBattleValue < compBattleValue) {
         score.lossCount++;
         lossLi.innerText = `Losses: ${score.lossCount}`;
         console.log('Player loses');
-    } else if (+playerStats.hp > +compStats.hp) {
+    } else if (playerBattleValue > compBattleValue) {
         score.winCount++
         winLi.innerText = `Wins: ${score.winCount}`;
         console.log('Player wins');
@@ -75,7 +96,11 @@ async function pokemonFight() {
         score.drawCount++
         drawLi.innerText = `Draws: ${score.drawCount}`;
         console.log('draw');
-    }
+    };
+
+    //Update the total number of rounds
+    score.roundCount++;
+    totalLi.innerText = `Games played: ${score.roundCount}`;
 
  }
 
@@ -93,7 +118,7 @@ function handlePlayerNameSubmit(event) {
       
     welcomeHeader.innerText = `Let's play, ${playerName}!`
     welcomeHeader.style.visibility = 'visible';
-    nameFormDiv.style.visibility = 'hidden'; //hides the form after name entry
+    nameFormDiv.style.visibility = 'hidden'; //hides the player name form after name entry
     pokeFormDiv.style.visibility = 'visible'; //shows the pokemon form once we have a name
 }
 
@@ -105,6 +130,7 @@ async function handlePokeSubmit(event) {
 
     playerStats = await getPokemonData(playerPokemon);
     displayPlayerPokemon(playerStats);
+    pokeFormDiv.style.visibility = 'hidden'; //hides the pokemon form once we've picked one
 }
 
 //Helper functions

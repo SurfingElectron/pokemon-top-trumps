@@ -86,7 +86,7 @@ input[type=submit]:active {
   justify-content: center;
 }
 
-#player_welcome {
+#player-welcome {
   visibility: hidden;
 }
 
@@ -99,11 +99,9 @@ input[type=submit]:active {
   text-align:center;
 }
 
-/*
-#pokemon_form {
+#pokemon-form {
   visibility: hidden;
 }
-*/
 
 #fight {
   display: flex; 
