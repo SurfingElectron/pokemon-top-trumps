@@ -57,14 +57,17 @@ async function pokemonFight() {
     let compStats = await getPokemonData(compPokemon);
     displayCompPokemon(compStats);
 
-    /*
+    //Update the total number of rounds
     score.roundCount++;
     totalLi.innerText = `Games played: ${score.roundCount}`;
-    if (playerPokemon < computerPokemon) {
+
+   //Calcuate who won, and update win/loss/draw 
+    
+    if (+playerStats.hp < +compStats.hp) {
         score.lossCount++;
         lossLi.innerText = `Losses: ${score.lossCount}`;
         console.log('Player loses');
-    } else if (playerPokemon > computerPokemon) {
+    } else if (+playerStats.hp > +compStats.hp) {
         score.winCount++
         winLi.innerText = `Wins: ${score.winCount}`;
         console.log('Player wins');
@@ -73,7 +76,7 @@ async function pokemonFight() {
         drawLi.innerText = `Draws: ${score.drawCount}`;
         console.log('draw');
     }
-    */
+
  }
 
 
@@ -117,7 +120,6 @@ function capitaliseFirstLetter(string) {
 //Computer's choice of pokemon, picked by random number 1-898
 function getComputerMove() {
     let randomIndex = Math.floor(Math.random() * 898);
-    console.log(randomIndex);
     return randomIndex;
 };
 
