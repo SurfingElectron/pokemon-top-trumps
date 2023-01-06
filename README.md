@@ -1,5 +1,5 @@
 # Pokémon Top Trumps
-This is a plain HTML, CSS, and JavaScript project spun off one of the early School of Code to learn the basics of  manipulating the DOM and API requests.
+This is a plain HTML, CSS, and JavaScript project spun off one of the early [School of Code](https://github.com/SchoolOfCode) hackathons to learn the basics of  manipulating the DOM and API requests.
 
 ## Features
 - 📡 Fetches pokemon from the PokéAPI based on name or ID number, and displays an image and a selection of that data on a CSS-generated "card;
