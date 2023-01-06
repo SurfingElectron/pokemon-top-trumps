@@ -87,22 +87,24 @@ async function pokemonFight() {
     if (playerBattleValue < compBattleValue) {
         score.lossCount++;
         lossLi.innerText = `Losses: ${score.lossCount}`;
-        console.log('Player loses');
+        alert('You lost! 😔');
     } else if (playerBattleValue > compBattleValue) {
         score.winCount++
         winLi.innerText = `Wins: ${score.winCount}`;
-        console.log('Player wins');
+        alert('You won! 😊');
     } else {
         score.drawCount++
         drawLi.innerText = `Draws: ${score.drawCount}`;
-        console.log('draw');
+        alert('It\'s a draw! 😐');
     };
 
     //Update the total number of rounds
     score.roundCount++;
     totalLi.innerText = `Games played: ${score.roundCount}`;
-
- }
+    pokeInput.value = ''; //clear the text box
+    pokeFormDiv.style.visibility = 'visible'; //shows the pokemon form again so people can choose a new one
+    fightButton.style.visibility = 'hidden'; //hides the fight button so we can't spam click it 
+}
 
 
 //Form submission handlers
@@ -118,7 +120,7 @@ function handlePlayerNameSubmit(event) {
       
     welcomeHeader.innerText = `Let's play, ${playerName}!`
     welcomeHeader.style.visibility = 'visible';
-    nameFormDiv.style.visibility = 'hidden'; //hides the player name form after name entry
+    nameFormDiv.remove(); //removes the form from the DOM as we don't need it anymore
     pokeFormDiv.style.visibility = 'visible'; //shows the pokemon form once we have a name
 }
 

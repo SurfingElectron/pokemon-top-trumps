@@ -124,6 +124,12 @@ input[type=submit]:active {
   box-shadow: inset 2px 2px 5px var(--deep-shadow)
 }
 
+/* RESULTS LIST */
+.results {
+  text-align:center;
+}
+
+
 /* CARD DISPLAY */
 #both-cards {
   display: flex;
